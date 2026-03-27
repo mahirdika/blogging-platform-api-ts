@@ -1,13 +1,10 @@
 import mongoose from 'mongoose'
+import { type InferSchemaType } from 'mongoose'
 
 const { Schema } = mongoose
 
 const postSchema = new Schema(
     {
-        id: {
-            type: String,
-            unique: true,
-        },
         title: {
             type: String,
         },
@@ -18,12 +15,12 @@ const postSchema = new Schema(
             type: String,
         },
         tags: {
-            type: Array<string>,
+            type: [String],
         },
     },
     { timestamps: true },
 )
 
-const postModel = mongoose.model('post', postSchema)
+export type postType = InferSchemaType<typeof postSchema>
 
-export default postModel
+export const postModel = mongoose.model('post', postSchema)

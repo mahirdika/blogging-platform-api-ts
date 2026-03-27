@@ -1,7 +1,7 @@
 import type { Application, Router } from 'express'
-import postsRouter from './post.router.js'
+import postRouter from './post.router.js'
 
-const _routes: Array<[string, Router]> = [['/posts', postsRouter]]
+const _routes: Array<[string, Router]> = [['/posts', postRouter]]
 
 const routes = (app: Application) => {
     _routes.forEach(([path, router]) => {
